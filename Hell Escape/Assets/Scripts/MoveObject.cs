@@ -22,6 +22,14 @@ public class MoveObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	protected virtual void Update () {
+
+        // Check if game over.
+        if (GameManager.instance.GameOver)
+        {
+            // It's game over so lets exit this update.
+            return;
+        }
+
         // Move object to the left.
         transform.Translate(Vector3.left * (objectSpeed * Time.deltaTime));
 

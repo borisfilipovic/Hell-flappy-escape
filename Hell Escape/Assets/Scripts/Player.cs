@@ -48,6 +48,9 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // If game over then do not allow player controlls.
+        if (GameManager.instance.GameOver) { return; }
+
         // Check if mouse button was clicked.
 		if(Input.GetMouseButtonDown(0))
         {
@@ -93,6 +96,9 @@ public class Player : MonoBehaviour {
 
             // Play death sound.
             audioSource.PlayOneShot(sfxDeath);
+
+            // Notify game manager that player collided with obstacle.
+            GameManager.instance.PlayerCollided();
         }
     }
 }
