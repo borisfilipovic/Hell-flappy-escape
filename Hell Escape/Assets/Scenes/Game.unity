@@ -4137,6 +4137,7 @@ GameObject:
   - component: {fileID: 867680581}
   - component: {fileID: 867680580}
   - component: {fileID: 867680585}
+  - component: {fileID: 867680586}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4294,6 +4295,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &867680586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 867680579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab9825dade35704baaae98ce8008c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &973570950
 GameObject:
   m_ObjectHideFlags: 0
@@ -4830,6 +4842,15 @@ Prefab:
     - target: {fileID: 4790584502011112, guid: 28f4a17db8bc9f9429e83e1715148598, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306032768677046, guid: 28f4a17db8bc9f9429e83e1715148598,
+        type: 2}
+      propertyPath: sfxDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: c031b3886dc07b94cb065f19485c33fc, type: 3}
+    - target: {fileID: 1037562747582224, guid: 28f4a17db8bc9f9429e83e1715148598, type: 2}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28f4a17db8bc9f9429e83e1715148598, type: 2}
