@@ -52,19 +52,25 @@ public class Player : MonoBehaviour {
         if (GameManager.instance.GameOver) { return; }
 
         // Check if mouse button was clicked.
-		if(Input.GetMouseButtonDown(0))
+        if (!GameManager.instance.GameOver && GameManager.instance.GameStarted )
         {
-            // Play jump animation.
-            anim.Play(jumpAnimationName);
+            if (Input.GetMouseButtonDown(0))
+            {
+                // Set player is active in game manager.
+                GameManager.instance.PlayerStartedGame();
 
-            // Set gravity to true so he starts falling.
-            rigidBody.useGravity = true;
+                // Play jump animation.
+                anim.Play(jumpAnimationName);
 
-            // Set jump flag to true.
-            jump = true;
+                // Set gravity to true so he starts falling.
+                rigidBody.useGravity = true;
 
-            // Play jump sound.
-            audioSource.PlayOneShot(sfxJump);
+                // Set jump flag to true.
+                jump = true;
+
+                // Play jump sound.
+                audioSource.PlayOneShot(sfxJump);
+            }
         }
 	}
 

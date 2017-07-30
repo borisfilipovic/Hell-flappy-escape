@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GameManager : MonoBehaviour {
 
@@ -10,6 +11,10 @@ public class GameManager : MonoBehaviour {
     // Private properties.
     private bool playerActive = false;
     private bool gameOver = false;
+    private bool gameStarted = false;
+
+    [SerializeField]
+    private GameObject mainMenu;
 
     // Public accessors.
     public bool PlayerActive
@@ -20,6 +25,11 @@ public class GameManager : MonoBehaviour {
     public bool GameOver
     {
         get { return gameOver; }
+    }
+
+    public bool GameStarted
+    {
+        get { return gameStarted; }
     }
 
     void Awake() {
@@ -36,6 +46,9 @@ public class GameManager : MonoBehaviour {
 
         // Dont destroy singleton when new scene is loaded. It will persist between scenes.
         DontDestroyOnLoad(gameObject);
+
+        // Assert that menu is not null.
+        Assert.IsNotNull(mainMenu);
     }
 
 	/******************** PUBLIC METHODS **********************/
@@ -49,5 +62,14 @@ public class GameManager : MonoBehaviour {
     public void PlayerStartedGame()
     {
         playerActive = true;
+    }
+
+    public void EnterGame()
+    {
+        // Hide main menu.
+        mainMenu.SetActive(false);
+
+        // Set game started flag.
+        gameStarted = true;
     }
 }
