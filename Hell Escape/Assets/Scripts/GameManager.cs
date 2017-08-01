@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour {
     // Create singleton.
     public static GameManager instance = null;
 
+    // Public properties.
+    public float shakeDuration = 0.0f;
+    public float shakeMagnitude = 0.0f;
+
     // Private properties.
     private bool playerActive = false;
     private bool gameOver = false;
@@ -51,12 +55,44 @@ public class GameManager : MonoBehaviour {
         Assert.IsNotNull(mainMenu);
     }
 
-	/******************** PUBLIC METHODS **********************/
+    /******************** PRIVATE METHODS **********************/
+
+    /// <summary>
+    /// Shake main camera - Perlin noise.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator Shake()
+    {
+        float elapsed = 0.0f;
+        Vector3 originalCamPos = Camera.main.transform.position;
+        while (elapsed < shakeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float percentComplete = elapsed / shakeDuration;
+            float damper = 1.0f - Mathf.Clamp(10.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+
+            // map value to [-1, 1]
+            float x = Random.value * 2.0f - 1.0f;
+            float y = Random.value * 2.0f - 1.0f;
+
+            x *= shakeMagnitude * damper;
+            y *= shakeMagnitude * damper;
+
+            Camera.main.transform.position = new Vector3(x, y + originalCamPos.y, originalCamPos.z);
+            yield return null;
+
+        }
+        Camera.main.transform.position = originalCamPos;
+
+    }
+
+    /******************** PUBLIC METHODS **********************/
 
     public void PlayerCollided()
     {
+        StartCoroutine(Shake());
         gameOver = true;
-        playerActive = false;
+        playerActive = false;        
     }
 
     public void PlayerStartedGame()

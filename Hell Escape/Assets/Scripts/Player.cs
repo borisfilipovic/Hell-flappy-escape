@@ -95,7 +95,7 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.tag == obstacleTag)
         {
             // If player hits obstacle let obstacle force/bounce him back a little.
-            rigidBody.AddForce(new Vector2(-50, 20), ForceMode.Impulse);
+            rigidBody.AddForce(new Vector2(-70, 20), ForceMode.Impulse);
 
             // Turn collisions off so he won't hit other obstacles.
             rigidBody.detectCollisions = false;
