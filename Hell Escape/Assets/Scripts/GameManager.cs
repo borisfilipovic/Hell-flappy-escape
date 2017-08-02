@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
 
     // Public properties.
+    public bool shakeCameraEnabled = false;
     public float shakeDuration = 0.0f;
     public float shakeMagnitude = 0.0f;
 
@@ -90,7 +91,11 @@ public class GameManager : MonoBehaviour {
 
     public void PlayerCollided()
     {
-        StartCoroutine(Shake());
+        /// Check if came shake is enabled.
+        if (shakeCameraEnabled)
+        {
+            StartCoroutine(Shake());
+        }        
         gameOver = true;
         playerActive = false;        
     }
