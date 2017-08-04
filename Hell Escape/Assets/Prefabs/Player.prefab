@@ -490,6 +490,8 @@ MonoBehaviour:
   jumpForce: 100
   sfxJump: {fileID: 8300000, guid: f7096f43bfc4bf94b9a7853417dfe995, type: 3}
   sfxDeath: {fileID: 8300000, guid: c031b3886dc07b94cb065f19485c33fc, type: 3}
+  minY: 3
+  maxY: 10
 --- !u!135 &135432780309516264
 SphereCollider:
   m_ObjectHideFlags: 1

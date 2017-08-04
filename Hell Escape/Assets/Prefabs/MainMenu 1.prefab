@@ -308,7 +308,6 @@ GameObject:
   - component: {fileID: 95920642741480916}
   - component: {fileID: 54915449786140168}
   - component: {fileID: 135209640328821982}
-  - component: {fileID: 114955370919010706}
   - component: {fileID: 82476151913824974}
   m_Layer: 0
   m_Name: Zombie
@@ -915,20 +914,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &114955370919010706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1984357926282750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78bb6c8fa5219cc4798df75461006195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 100
-  sfxJump: {fileID: 8300000, guid: f7096f43bfc4bf94b9a7853417dfe995, type: 3}
-  sfxDeath: {fileID: 8300000, guid: c031b3886dc07b94cb065f19485c33fc, type: 3}
 --- !u!124 &124448056873330052
 Behaviour:
   m_ObjectHideFlags: 1

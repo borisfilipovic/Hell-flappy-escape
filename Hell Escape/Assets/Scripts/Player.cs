@@ -20,13 +20,11 @@ public class Player : MonoBehaviour {
     private AudioSource audioSource;
     private string obstacleTag;
     private string jumpAnimationName;
-    private Quaternion defaultRotation;
+    private float minY = 3.0f;
+    private float maxY = 10.0f;
 
     void Awake()
     {
-        // Save players default rotation.
-        defaultRotation = gameObject.transform.rotation;
-
         // Check if objects are really here. Defensive programming.
         Assert.IsNotNull(sfxJump);
         Assert.IsNotNull(sfxDeath);
@@ -90,7 +88,18 @@ public class Player : MonoBehaviour {
 
             // Push player character straight up into the air.
             rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode.Impulse);
-        }        
+        }
+
+        // Check min and max x values.
+        if (transform.position.y < minY)
+        {
+            /// Set new min x value.
+            transform.position = new Vector3(transform.position.x, minY, transform.position.z);
+        } else if (transform.position.y > maxY)
+        {
+            /// Set new max x value.
+            transform.position = new Vector3(transform.position.x, maxY, transform.position.z);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -116,13 +125,7 @@ public class Player : MonoBehaviour {
 
     public void setStart(Vector3 position)
     {
-        /// Reset velocity so he stops moving. He can jump again now.
-        //rigidBody.velocity = new Vector2(0, 0); // Reset velocity so he can jump again.
-
         /// Set start position in base class.
         gameObject.transform.position = position;
-
-        /// Set detect collisions to true.
-        //rigidBody.detectCollisions = true;
     }
 }
