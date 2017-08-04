@@ -13,3 +13,11 @@ public enum ObjectTags
 {
     obstacle,
 };
+
+// Game states.
+public enum GameState
+{
+    mainMenuScreen,
+    playScreen,
+    replayScreen,
+};

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     // Private properties.
     private bool playerActive = false;
     private bool gameOver = false;
+    private bool gameReplay = false;
     private bool gameStarted = false;
 
     [SerializeField]
@@ -35,6 +36,11 @@ public class GameManager : MonoBehaviour {
     public bool GameStarted
     {
         get { return gameStarted; }
+    }
+
+    public bool GameReplay
+    {
+        get { return gameReplay; }
     }
 
     void Awake() {
@@ -91,13 +97,20 @@ public class GameManager : MonoBehaviour {
 
     public void PlayerCollided()
     {
-        /// Check if came shake is enabled.
+        /// Check if camera shake is enabled.
         if (shakeCameraEnabled)
         {
             StartCoroutine(Shake());
         }        
         gameOver = true;
-        playerActive = false;        
+        playerActive = false;
+        gameReplay = true;
+
+        /// Set main menu state.
+        MenuManager.instance.Game(GameState.replayScreen);
+
+        /// Show main menu. 
+        mainMenu.SetActive(true);
     }
 
     public void PlayerStartedGame()
