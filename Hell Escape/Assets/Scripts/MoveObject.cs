@@ -38,4 +38,12 @@ public class MoveObject : MonoBehaviour {
             transform.position = newPosition;
         }
     }
+
+    /******************** PUBLIC METHODS **********************/
+
+    public void setStart(Vector3 position)
+    {
+        /// Set start position.
+        gameObject.transform.position = position;
+    }
 }

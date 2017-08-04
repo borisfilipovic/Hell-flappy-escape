@@ -18,9 +18,14 @@ public class GameManager : MonoBehaviour {
     private bool gameOver = false;
     private bool gameReplay = false;
     private bool gameStarted = false;
+    private GameObject player;
 
     [SerializeField]
     private GameObject mainMenu;
+
+    [SerializeField]
+    private GameObject playerPrefab;
+    
 
     // Public accessors.
     public bool PlayerActive
@@ -60,6 +65,7 @@ public class GameManager : MonoBehaviour {
 
         // Assert that menu is not null.
         Assert.IsNotNull(mainMenu);
+        Assert.IsNotNull(playerPrefab);
     }
 
     /******************** PRIVATE METHODS **********************/
@@ -93,6 +99,40 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    IEnumerator Delay(float timeInterval)
+    {
+        yield return new WaitForSeconds(timeInterval);
+        SetAfterPlayerCollidedState();
+    }
+
+    private void SetAfterPlayerCollidedState()
+    {
+        /// Set main menu state.
+        MenuManager.instance.Game(GameState.replayScreen);
+
+        /// Show main menu. 
+        mainMenu.SetActive(true);
+
+        /// Reset rock position.
+        GameObject obstacle = GameObject.FindGameObjectWithTag(ConstantsManager.GetTag(ObjectTags.obstacle));
+        if (obstacle != null)
+        {
+            Rock rockScript = obstacle.GetComponent<Rock>();
+            if (rockScript != null)
+            {
+                /// Get random starting position coordinates.
+                float randomX = Random.Range(3.75f, 4.0f);
+                float randomY = Random.Range(2.0f, 8.0f);
+
+                /// Set new starting position.
+                rockScript.setStart(new Vector3(randomX, randomY, -3.2f));
+            }
+        }
+
+        /// Destroy player prefab.
+        Destroy(player);
+    }
+
     /******************** PUBLIC METHODS **********************/
 
     public void PlayerCollided()
@@ -106,11 +146,8 @@ public class GameManager : MonoBehaviour {
         playerActive = false;
         gameReplay = true;
 
-        /// Set main menu state.
-        MenuManager.instance.Game(GameState.replayScreen);
-
-        /// Show main menu. 
-        mainMenu.SetActive(true);
+        /// Wait for player animation to finish.
+        StartCoroutine(Delay(2.0f));
     }
 
     public void PlayerStartedGame()
@@ -123,7 +160,29 @@ public class GameManager : MonoBehaviour {
         // Hide main menu.
         mainMenu.SetActive(false);
 
+        // Set game over flag to false-
+        gameOver = false;
+
         // Set game started flag.
         gameStarted = true;
+
+        // Set player active status.
+        playerActive = true;
+
+        // Instansiate player.
+        player = Instantiate(playerPrefab);
+
+        // Set players position.
+        if(player != null)
+        {
+            Player playerScript = player.GetComponent<Player>();
+            if (playerScript != null)
+            {
+                // Set player position.
+                float randomY = Random.Range(4.0f, 6.0f);
+                playerScript.setStart(new Vector3(-0.5f, randomY, -3.2f));
+            }
+        }
+
     }
 }

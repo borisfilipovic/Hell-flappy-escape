@@ -20,9 +20,13 @@ public class Player : MonoBehaviour {
     private AudioSource audioSource;
     private string obstacleTag;
     private string jumpAnimationName;
+    private Quaternion defaultRotation;
 
     void Awake()
     {
+        // Save players default rotation.
+        defaultRotation = gameObject.transform.rotation;
+
         // Check if objects are really here. Defensive programming.
         Assert.IsNotNull(sfxJump);
         Assert.IsNotNull(sfxDeath);
@@ -106,5 +110,19 @@ public class Player : MonoBehaviour {
             // Notify game manager that player collided with obstacle.
             GameManager.instance.PlayerCollided();
         }
+    }
+
+    /******************** PUBLIC METHODS **********************/
+
+    public void setStart(Vector3 position)
+    {
+        /// Reset velocity so he stops moving. He can jump again now.
+        //rigidBody.velocity = new Vector2(0, 0); // Reset velocity so he can jump again.
+
+        /// Set start position in base class.
+        gameObject.transform.position = position;
+
+        /// Set detect collisions to true.
+        //rigidBody.detectCollisions = true;
     }
 }
