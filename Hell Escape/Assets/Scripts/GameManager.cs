@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour {
     private GameObject mainMenu;
 
     [SerializeField]
+    private GameObject mainMenuPrefab;
+
+    [SerializeField]
     private GameObject playerPrefab;
 
     [SerializeField]
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour {
 
         // Assert that menu is not null.
         Assert.IsNotNull(mainMenu);
+        Assert.IsNotNull(mainMenuPrefab);
         Assert.IsNotNull(playerPrefab);
         Assert.IsNotNull(scenes);
     }
@@ -116,6 +120,9 @@ public class GameManager : MonoBehaviour {
 
         /// Show main menu. 
         mainMenu.SetActive(true);
+
+        /// Show main menu.
+        mainMenuPrefab.SetActive(true);
 
         /// Reset rock position.
         GameObject obstacle = GameObject.FindGameObjectWithTag(ConstantsManager.GetTag(ObjectTags.obstacle));
@@ -187,6 +194,7 @@ public class GameManager : MonoBehaviour {
     {
         // Hide main menu.
         mainMenu.SetActive(false);
+        mainMenuPrefab.SetActive(false);
 
         // Set game over flag to false.
         gameOver = false;
