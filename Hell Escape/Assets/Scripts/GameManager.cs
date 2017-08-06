@@ -19,13 +19,16 @@ public class GameManager : MonoBehaviour {
     private bool gameReplay = false;
     private bool gameStarted = false;
     private GameObject player;
+    private GameObject currentScene;
 
     [SerializeField]
     private GameObject mainMenu;
 
     [SerializeField]
     private GameObject playerPrefab;
-    
+
+    [SerializeField]
+    List<GameObject> scenes;
 
     // Public accessors.
     public bool PlayerActive
@@ -66,6 +69,7 @@ public class GameManager : MonoBehaviour {
         // Assert that menu is not null.
         Assert.IsNotNull(mainMenu);
         Assert.IsNotNull(playerPrefab);
+        Assert.IsNotNull(scenes);
     }
 
     /******************** PRIVATE METHODS **********************/
@@ -131,6 +135,30 @@ public class GameManager : MonoBehaviour {
 
         /// Destroy player prefab.
         Destroy(player);
+
+        /// Destroy scene prefab.
+        Destroy(currentScene);
+    }
+
+    /// <summary>
+    /// Instantiate random game scene.
+    /// </summary>
+
+    private void InstantiateScene()
+    {
+        /// Get random number.
+        int randomSceneNumber = Random.Range(0, scenes.Count);
+
+        /// Check if scene number is higher than scene count.
+        if (randomSceneNumber > scenes.Count - 1)
+        {    
+            /// Set it to last scene in array.   
+            randomSceneNumber = scenes.Count - 1;
+        }
+
+        /// Instantiate scene.
+        currentScene = Instantiate(scenes[randomSceneNumber]);
+        currentScene.transform.position = Vector3.zero;
     }
 
     /******************** PUBLIC METHODS **********************/
@@ -160,7 +188,7 @@ public class GameManager : MonoBehaviour {
         // Hide main menu.
         mainMenu.SetActive(false);
 
-        // Set game over flag to false-
+        // Set game over flag to false.
         gameOver = false;
 
         // Set game started flag.
@@ -168,6 +196,9 @@ public class GameManager : MonoBehaviour {
 
         // Set player active status.
         playerActive = true;
+
+        // Instantiate scene.
+        InstantiateScene();
 
         // Instansiate player.
         player = Instantiate(playerPrefab);

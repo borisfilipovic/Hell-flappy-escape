@@ -7,8 +7,10 @@ public class Rock : MoveObject {
     // Public.
     [SerializeField]
     float moveSpeed;
+
     [SerializeField]
     Vector3 topPosition;
+
     [SerializeField]
     Vector3 bottomPosition;
 
