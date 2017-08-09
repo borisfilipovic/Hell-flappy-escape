@@ -302,7 +302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037562747582224}
   m_LocalRotation: {x: 0, y: 0.9063079, z: 0, w: 0.42261827}
-  m_LocalPosition: {x: -0.5, y: 3.84, z: -3.33}
+  m_LocalPosition: {x: -1, y: 3.84, z: -3.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4790582390422156}
@@ -490,8 +490,6 @@ MonoBehaviour:
   jumpForce: 100
   sfxJump: {fileID: 8300000, guid: f7096f43bfc4bf94b9a7853417dfe995, type: 3}
   sfxDeath: {fileID: 8300000, guid: c031b3886dc07b94cb065f19485c33fc, type: 3}
-  minY: 3
-  maxY: 10
 --- !u!135 &135432780309516264
 SphereCollider:
   m_ObjectHideFlags: 1

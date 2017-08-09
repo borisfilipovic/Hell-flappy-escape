@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour {
             {
                 // Set player position.
                 float randomY = Random.Range(4.0f, 6.0f);
-                playerScript.setStart(new Vector3(-0.5f, randomY, -3.2f));
+                playerScript.setStart(new Vector3(-0.9f, randomY, -3.2f));
             }
         }
 
