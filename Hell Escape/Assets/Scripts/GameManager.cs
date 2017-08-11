@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
     private bool gameStarted = false;
     private GameObject player;
     private GameObject currentScene;
+    private GameObject hitSmokeEffect;
 
     [SerializeField]
     private GameObject mainMenu;
@@ -29,6 +30,9 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject playerPrefab;
+
+    [SerializeField]
+    private GameObject hitSmokeEffectPrefab;
 
     [SerializeField]
     List<GameObject> scenes;
@@ -74,6 +78,7 @@ public class GameManager : MonoBehaviour {
         Assert.IsNotNull(mainMenuPrefab);
         Assert.IsNotNull(playerPrefab);
         Assert.IsNotNull(scenes);
+        Assert.IsNotNull(hitSmokeEffectPrefab);
     }
 
     /******************** PRIVATE METHODS **********************/
@@ -143,6 +148,9 @@ public class GameManager : MonoBehaviour {
         /// Destroy player prefab.
         Destroy(player);
 
+        /// Destroy hit smoke effect.
+        Destroy(hitSmokeEffect);
+
         /// Destroy scene prefab.
         Destroy(currentScene);
     }
@@ -180,6 +188,10 @@ public class GameManager : MonoBehaviour {
         gameOver = true;
         playerActive = false;
         gameReplay = true;
+
+        /// Display hit smoke effect.
+        hitSmokeEffect = Instantiate(hitSmokeEffectPrefab);
+        hitSmokeEffect.transform.position = player.transform.position;
 
         /// Wait for player animation to finish.
         StartCoroutine(Delay(2.0f));
