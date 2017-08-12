@@ -112,7 +112,7 @@ NavMeshSettings:
 Transform:
   m_PrefabParentObject: {fileID: 4853502818739564, guid: 0ddd763a3bbc5e343b10c242408c0f37,
     type: 2}
-  m_PrefabInternal: {fileID: 1734142410}
+  m_PrefabInternal: {fileID: 1789432415}
 --- !u!1 &867680579
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,9 +307,9 @@ MonoBehaviour:
   scenes:
   - {fileID: 1161104278736998, guid: 4c04507aa2264e041bf5a77cde2593a0, type: 2}
   - {fileID: 1379236115456414, guid: d019198cc32605349b4930b93a0b97d6, type: 2}
-  - {fileID: 1126104137795122, guid: f5c33489be3126c4a9dccbe111a17f9f, type: 2}
   - {fileID: 1904361208799270, guid: 569f01684d8b38b4ca5df717f05b7782, type: 2}
   - {fileID: 1936638426849804, guid: f7655710e7ee8154e9582beb8690479b, type: 2}
+  - {fileID: 1965351243136390, guid: 21c389fc99774cc42813fdd6c33b1586, type: 2}
 --- !u!1 &1153956449
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +350,7 @@ Transform:
   m_PrefabParentObject: {fileID: 4369794708147680, guid: de6bd134bc78e8345ad5c9afee60ad8d,
     type: 2}
   m_PrefabInternal: {fileID: 1940847907}
---- !u!1001 &1734142410
+--- !u!1001 &1789432415
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -389,11 +389,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 23935816631890786, guid: 0ddd763a3bbc5e343b10c242408c0f37,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f5bd5949ed04fc747868155d9241997b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ddd763a3bbc5e343b10c242408c0f37, type: 2}
   m_IsPrefabParent: 0
@@ -580,12 +575,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114558911542768188, guid: de6bd134bc78e8345ad5c9afee60ad8d,
+    - target: {fileID: 114558825948193512, guid: de6bd134bc78e8345ad5c9afee60ad8d,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 867680586}
-    - target: {fileID: 114558825948193512, guid: de6bd134bc78e8345ad5c9afee60ad8d,
+    - target: {fileID: 114558911542768188, guid: de6bd134bc78e8345ad5c9afee60ad8d,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
