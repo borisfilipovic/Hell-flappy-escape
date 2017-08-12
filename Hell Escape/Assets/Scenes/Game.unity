@@ -302,12 +302,12 @@ MonoBehaviour:
   mainMenuPrefab: {fileID: 1153956449}
   playerPrefab: {fileID: 1037562747582224, guid: 28f4a17db8bc9f9429e83e1715148598,
     type: 2}
+  hitSmokeEffectPrefab: {fileID: 1008902471552046, guid: 6c35776f4d15c504e9727d162b700ba5,
+    type: 2}
   scenes:
   - {fileID: 1161104278736998, guid: 4c04507aa2264e041bf5a77cde2593a0, type: 2}
-  - {fileID: 1046108931044086, guid: 6abed6a9d32b5c94fa3969f3ca3689c7, type: 2}
   - {fileID: 1379236115456414, guid: d019198cc32605349b4930b93a0b97d6, type: 2}
   - {fileID: 1126104137795122, guid: f5c33489be3126c4a9dccbe111a17f9f, type: 2}
-  - {fileID: 1474912108699114, guid: b0622b3b3c7f3c745ae2213862cfc2a6, type: 2}
   - {fileID: 1904361208799270, guid: 569f01684d8b38b4ca5df717f05b7782, type: 2}
   - {fileID: 1936638426849804, guid: f7655710e7ee8154e9582beb8690479b, type: 2}
 --- !u!1 &1153956449
@@ -389,6 +389,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23935816631890786, guid: 0ddd763a3bbc5e343b10c242408c0f37,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5bd5949ed04fc747868155d9241997b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ddd763a3bbc5e343b10c242408c0f37, type: 2}
   m_IsPrefabParent: 0
