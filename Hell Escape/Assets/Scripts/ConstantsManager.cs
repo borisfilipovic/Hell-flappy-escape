@@ -10,6 +10,9 @@ public class ConstantsManager : MonoBehaviour {
     // Animation names.
     const string ANIMATION_JUMP = "Jump";
 
+    // Shader texture property name.
+    const string SHADER_SKYDOME_OFFSET_TEXTURE_NAME = "_MainTex";
+
     // ************************** PUBLIC ************************** //
 
     // Get tag for specific gameobject.
@@ -34,5 +37,11 @@ public class ConstantsManager : MonoBehaviour {
             default:
                 return "";
         }
+    }
+
+    // Get shader texture offset name.
+    public static string GetShaderTextureOffSetName()
+    {
+        return SHADER_SKYDOME_OFFSET_TEXTURE_NAME;
     }
 }
