@@ -21,3 +21,11 @@ public enum GameState
     playScreen,
     replayScreen,
 };
+
+// Game score.
+public enum GameScore
+{
+    add,
+    remove,
+    reset,
+};

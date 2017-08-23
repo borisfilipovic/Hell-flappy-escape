@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public float shakeMagnitude = 0.0f;
 
     // Private properties.
+    private int currentScore = 0;
     private bool playerActive = false;
     private bool gameOver = false;
     private bool gameReplay = false;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour {
     private GameObject player;
     private GameObject currentScene;
     private GameObject hitSmokeEffect;
+    private Score score;
 
     [SerializeField]
     private GameObject mainMenu;
@@ -30,6 +32,9 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject playerPrefab;
+
+    [SerializeField]
+    private GameObject sceneGUI;
 
     [SerializeField]
     private GameObject hitSmokeEffectPrefab;
@@ -79,6 +84,17 @@ public class GameManager : MonoBehaviour {
         Assert.IsNotNull(playerPrefab);
         Assert.IsNotNull(scenes);
         Assert.IsNotNull(hitSmokeEffectPrefab);
+        Assert.IsNotNull(sceneGUI);
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        /// Get score script from Canvas gameobject.        
+        score = sceneGUI.GetComponent<Score>();
+
+        /// Set canvas inactive.
+        sceneGUI.SetActive(false);
     }
 
     /******************** PRIVATE METHODS **********************/
@@ -128,6 +144,9 @@ public class GameManager : MonoBehaviour {
 
         /// Show main menu.
         mainMenuPrefab.SetActive(true);
+
+        /// Hide scene GUI.
+        sceneGUI.SetActive(false);
 
         /// Reset rock position.
         GameObject obstacle = GameObject.FindGameObjectWithTag(ConstantsManager.GetTag(ObjectTags.obstacle));
@@ -217,6 +236,9 @@ public class GameManager : MonoBehaviour {
         // Set player active status.
         playerActive = true;
 
+        // Set scene GUI.
+        sceneGUI.SetActive(true);
+
         // Instantiate scene.
         InstantiateScene();
 
@@ -235,5 +257,39 @@ public class GameManager : MonoBehaviour {
             }
         }
 
+        // Delete me.
+        ScoreChanged(GameScore.add);
+    }
+
+    public void ScoreChanged(GameScore scoreType)
+    {
+        switch (scoreType)
+        {
+            case GameScore.add:
+                ++currentScore;
+                print("++score");
+                break;
+            case GameScore.remove:
+                --currentScore;
+                print("--score");
+                break;
+            case GameScore.reset:
+                currentScore = 0;
+                break;
+            default:
+                break;
+        }
+
+        /// Present new score to player.
+        DisplayCurrentScore(currentScore);
+    }
+
+    private void DisplayCurrentScore(int newScore)
+    {
+        /// Exit if score is null.
+        if (score == null) { return; }
+
+        /// Update score.
+        score.SetScore(newScore);
     }
 }
