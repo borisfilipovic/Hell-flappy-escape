@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Rock : MoveObject {
 
+    // Private.
+    private bool gameManagerNotifiedThatScoreChanged = false;
+
     // Public.
     [SerializeField]
     float moveSpeed;
@@ -25,6 +28,13 @@ public class Rock : MoveObject {
         if (GameManager.instance.PlayerActive)
         {
             base.Update();
+            if (transform.localPosition.x < -2.0f && !gameManagerNotifiedThatScoreChanged)
+            {
+                GameScoreChanged();
+            } else if (transform.localPosition.x > 3.0f && gameManagerNotifiedThatScoreChanged)
+            {
+                gameManagerNotifiedThatScoreChanged = false;
+            }
         }        
     }
 
@@ -44,5 +54,11 @@ public class Rock : MoveObject {
 
         // Call self to start courutine again.
         StartCoroutine(Move(newTarget));
+    }
+
+    private void GameScoreChanged()
+    {
+        gameManagerNotifiedThatScoreChanged = true;
+        GameManager.instance.ScoreChanged(GameScore.add);
     }
 }

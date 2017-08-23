@@ -245,6 +245,9 @@ public class GameManager : MonoBehaviour {
         // Instansiate player.
         player = Instantiate(playerPrefab);
 
+        // Reset score.
+        ScoreChanged(GameScore.reset);
+
         // Set players position.
         if(player != null)
         {
@@ -256,9 +259,6 @@ public class GameManager : MonoBehaviour {
                 playerScript.setStart(new Vector3(-0.9f, randomY, -3.2f));
             }
         }
-
-        // Delete me.
-        ScoreChanged(GameScore.add);
     }
 
     public void ScoreChanged(GameScore scoreType)
@@ -267,11 +267,9 @@ public class GameManager : MonoBehaviour {
         {
             case GameScore.add:
                 ++currentScore;
-                print("++score");
                 break;
             case GameScore.remove:
                 --currentScore;
-                print("--score");
                 break;
             case GameScore.reset:
                 currentScore = 0;
