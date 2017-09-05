@@ -5,7 +5,9 @@ using UnityEngine;
 // Animations.
 public enum Animations
 {
+    idle,
     jump,
+    fly,
 };
 
 // Tags for game objects.

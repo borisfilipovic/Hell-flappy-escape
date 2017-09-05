@@ -8,7 +8,9 @@ public class ConstantsManager : MonoBehaviour {
     const string OBSTACLE_TAG = "Obstacle";
 
     // Animation names.
+    const string ANIMATION_IDLE = "Idle";
     const string ANIMATION_JUMP = "Jump";
+    const string ANIMATION_FLY = "Fly";
 
     // Shader texture property name.
     const string SHADER_SKYDOME_OFFSET_TEXTURE_NAME = "_MainTex";
@@ -32,8 +34,12 @@ public class ConstantsManager : MonoBehaviour {
     {
         switch (animation)
         {
+            case Animations.idle:
+                return ANIMATION_IDLE;
             case Animations.jump:
                 return ANIMATION_JUMP;
+            case Animations.fly:
+                return ANIMATION_FLY;
             default:
                 return "";
         }

@@ -46,7 +46,10 @@ public class Player : MonoBehaviour {
 
         // Get jump animation name.
         jumpAnimationName = ConstantsManager.GetAnimationName(Animations.jump);
-	}
+
+        // Play jump animation.
+        anim.Play(ConstantsManager.GetAnimationName(Animations.fly));
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -71,7 +74,7 @@ public class Player : MonoBehaviour {
                 jump = true;
 
                 // Play jump sound.
-                audioSource.PlayOneShot(sfxJump);
+                //audioSource.PlayOneShot(sfxJump);
             }
         }
 	}
@@ -114,7 +117,7 @@ public class Player : MonoBehaviour {
             rigidBody.detectCollisions = false;
 
             // Play death sound.
-            audioSource.PlayOneShot(sfxDeath);
+            //audioSource.PlayOneShot(sfxDeath);
 
             // Notify game manager that player collided with obstacle.
             GameManager.instance.PlayerCollided();
