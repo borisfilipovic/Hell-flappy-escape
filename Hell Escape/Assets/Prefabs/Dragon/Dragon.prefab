@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bb6c8fa5219cc4798df75461006195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 100
+  jumpForce: 80
   sfxJump: {fileID: 8300000, guid: f7096f43bfc4bf94b9a7853417dfe995, type: 3}
   sfxDeath: {fileID: 8300000, guid: c031b3886dc07b94cb065f19485c33fc, type: 3}
 --- !u!135 &135785376132374418
