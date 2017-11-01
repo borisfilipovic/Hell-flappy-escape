@@ -8760,8 +8760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectSpeed: 2
-  startPosition: 66
-  resetPosition: -42
+  startPosition: 48
+  resetPosition: -60
 --- !u!114 &114417300448699052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8842,8 +8842,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectSpeed: 2
-  startPosition: 66
-  resetPosition: -42
+  startPosition: 48
+  resetPosition: -60
 --- !u!198 &198350964606103168
 ParticleSystem:
   m_ObjectHideFlags: 1

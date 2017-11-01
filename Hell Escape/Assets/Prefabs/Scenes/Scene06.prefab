@@ -2198,8 +2198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectSpeed: 2
-  startPosition: 66
-  resetPosition: -42
+  startPosition: 48
+  resetPosition: -60
 --- !u!114 &114258558951740038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2280,8 +2280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectSpeed: 2
-  startPosition: 66
-  resetPosition: -42
+  startPosition: 48
+  resetPosition: -60
 --- !u!198 &198210563439247412
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -8530,7 +8530,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 584915461
+  randomSeed: -296036499
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8899,7 +8899,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 5
+      value: 10
       mode: 0
       spread: 0
       speed:

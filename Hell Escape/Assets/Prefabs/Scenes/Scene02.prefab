@@ -2317,7 +2317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectSpeed: 2
-  startPosition: 66
+  startPosition: 48
   resetPosition: -42
 --- !u!114 &114254049143678838
 MonoBehaviour:
@@ -2331,7 +2331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectSpeed: 2
-  startPosition: 66
+  startPosition: 48
   resetPosition: -42
 --- !u!114 &114859833905145686
 MonoBehaviour:
