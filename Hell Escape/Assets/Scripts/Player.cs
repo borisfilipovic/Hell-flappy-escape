@@ -80,6 +80,12 @@ public class Player : MonoBehaviour {
 	}
 
     void FixedUpdate() {
+		// Check if user too low.
+		if (transform.position.y <= 1.2 && !GameManager.instance.GameOver) {
+			print("User it too low. He will die.");
+			PlayerCollided ();
+		}
+
         // Check if user jumped.
         if (jump == true)
         {
@@ -110,19 +116,24 @@ public class Player : MonoBehaviour {
         // Check collision.
         if (collision.gameObject.tag == obstacleTag)
         {
-            // If player hits obstacle let obstacle force/bounce him back a little.
-            rigidBody.AddForce(new Vector2(-70, 20), ForceMode.Impulse);
-
-            // Turn collisions off so he won't hit other obstacles.
-            rigidBody.detectCollisions = false;
-
-            // Play death sound.
-            //audioSource.PlayOneShot(sfxDeath);
-
-            // Notify game manager that player collided with obstacle.
-            GameManager.instance.PlayerCollided();
+			// Animate player collided with obstacle and notify manager of that.
+			PlayerCollided ();
         }
     }
+
+	void PlayerCollided () {
+		// If player hits obstacle let obstacle force/bounce him back a little.
+		rigidBody.AddForce(new Vector2(-70, 20), ForceMode.Impulse);
+
+		// Turn collisions off so he won't hit other obstacles.
+		rigidBody.detectCollisions = false;
+
+		// Play death sound.
+		//audioSource.PlayOneShot(sfxDeath);
+
+		// Notify game manager that player collided with obstacle.
+		GameManager.instance.PlayerCollided();
+	}
 
     /******************** PUBLIC METHODS **********************/
 
