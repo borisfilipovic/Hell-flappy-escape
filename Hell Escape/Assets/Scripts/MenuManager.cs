@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Assertions;
 
 public class MenuManager : MonoBehaviour {
@@ -10,13 +11,16 @@ public class MenuManager : MonoBehaviour {
 
     // Private properties.
 
-    private GameManager gameManager;
+    //private GameManager gameManager;
 
     [SerializeField]
     private GameObject playView;
 
     [SerializeField]
     private GameObject replayView;
+
+	[SerializeField]
+	private Text topScore;
 
     // Lifecycle.
 
@@ -40,16 +44,24 @@ public class MenuManager : MonoBehaviour {
         // Assert that gameobjects are not null.
         Assert.IsNotNull(playView);
         Assert.IsNotNull(replayView);
+		Assert.IsNotNull(topScore);
     }
 
     void Start()
     {
         // Find game manager.
-        gameManager = GameManager.instance;
+        //gameManager = GameManager.instance;
 
         /// Set state.
         SetGameState(GameState.playScreen);
     }
+
+	// Update best score from player prefs.
+
+	void updateBestScore() {
+		/// Update and set top score.
+		topScore.text = "Best score: " + ConstantsManager.GetTopScore().ToString ();
+	}
 
     /******************** PUBLIC METHODS **********************/
 
@@ -62,6 +74,7 @@ public class MenuManager : MonoBehaviour {
 
     private void SetGameState(GameState gameStateNew)
     {
+		updateBestScore();
         switch(gameStateNew)
         {
             case GameState.mainMenuScreen:

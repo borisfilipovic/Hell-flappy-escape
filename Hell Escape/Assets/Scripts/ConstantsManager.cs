@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ConstantsManager : MonoBehaviour {
 
+	// Player prefs.
+	const string PLAYER_TOP_SCORE = "PlayersTopScore";
+
     // Custom tags.
     const string OBSTACLE_TAG = "Obstacle";
 
@@ -16,6 +19,22 @@ public class ConstantsManager : MonoBehaviour {
     const string SHADER_SKYDOME_OFFSET_TEXTURE_NAME = "_MainTex";
 
     // ************************** PUBLIC ************************** //
+
+	// Set top score.
+	public static void SetTopScore(int score) {
+		// Check if realy top score.
+		int savedTopScore = GetTopScore();
+		if (savedTopScore < score) {
+			// We checked that new score is really the best score so far, so lets save it.
+			PlayerPrefs.SetInt(PLAYER_TOP_SCORE, score);
+		} 
+	}
+
+	// Get top score.
+	public static int GetTopScore() {
+		// Get players top score.
+		return PlayerPrefs.GetInt(PLAYER_TOP_SCORE);
+	}
 
     // Get tag for specific gameobject.
     public static string GetTag(ObjectTags gameObject)

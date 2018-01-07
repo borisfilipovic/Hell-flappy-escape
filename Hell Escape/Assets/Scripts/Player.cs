@@ -80,9 +80,9 @@ public class Player : MonoBehaviour {
 	}
 
     void FixedUpdate() {
-		// Check if user too low.
+		// Check if user is too low.
 		if (transform.position.y <= 1.2 && !GameManager.instance.GameOver) {
-			print("User it too low. He will die.");
+			// User was too low so he collided with floor.
 			PlayerCollided ();
 		}
 

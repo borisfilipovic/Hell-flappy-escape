@@ -78,6 +78,9 @@ public class GameManager : MonoBehaviour {
         // Dont destroy singleton when new scene is loaded. It will persist between scenes.
         DontDestroyOnLoad(gameObject);
 
+		/// Instantiate smoke.
+		hitSmokeEffect = Instantiate(hitSmokeEffectPrefab);
+
         // Assert that menu is not null.
         Assert.IsNotNull(mainMenu);
         Assert.IsNotNull(mainMenuPrefab);
@@ -103,30 +106,29 @@ public class GameManager : MonoBehaviour {
     /// Shake main camera - Perlin noise.
     /// </summary>
     /// <returns></returns>
-    IEnumerator Shake()
-    {
-        float elapsed = 0.0f;
-        Vector3 originalCamPos = Camera.main.transform.position;
-        while (elapsed < shakeDuration)
-        {
-            elapsed += Time.deltaTime;
-            float percentComplete = elapsed / shakeDuration;
-            float damper = 1.0f - Mathf.Clamp(10.0f * percentComplete - 3.0f, 0.0f, 1.0f);
-
-            // map value to [-1, 1]
-            float x = Random.value * 2.0f - 1.0f;
-            float y = Random.value * 2.0f - 1.0f;
-
-            x *= shakeMagnitude * damper;
-            y *= shakeMagnitude * damper;
-
-            Camera.main.transform.position = new Vector3(x, y + originalCamPos.y, originalCamPos.z);
-            yield return null;
-
-        }
-        Camera.main.transform.position = originalCamPos;
-
-    }
+//    IEnumerator Shake()
+//    {
+//        float elapsed = 0.0f;
+//        Vector3 originalCamPos = Camera.main.transform.position;
+//        while (elapsed < shakeDuration)
+//        {
+//            elapsed += Time.deltaTime;
+//            float percentComplete = elapsed / shakeDuration;
+//            float damper = 1.0f - Mathf.Clamp(10.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+//
+//            // map value to [-1, 1]
+//            float x = Random.value * 2.0f - 1.0f;
+//            float y = Random.value * 2.0f - 1.0f;
+//
+//            x *= shakeMagnitude * damper;
+//            y *= shakeMagnitude * damper;
+//
+//            Camera.main.transform.position = new Vector3(x, y + originalCamPos.y, originalCamPos.z);
+//            yield return null;
+//
+//        }
+//        Camera.main.transform.position = originalCamPos;
+//    }
 
     IEnumerator Delay(float timeInterval)
     {
@@ -200,13 +202,16 @@ public class GameManager : MonoBehaviour {
     public void PlayerCollided()
     {
         /// Check if camera shake is enabled.
-        if (shakeCameraEnabled)
-        {
-            StartCoroutine(Shake());
-        }        
+//        if (shakeCameraEnabled)
+//        {
+//            StartCoroutine(Shake());
+//        }        
         gameOver = true;
         playerActive = false;
         gameReplay = true;
+
+		// Save score.
+		ConstantsManager.SetTopScore(currentScore);
 
         /// Display hit smoke effect.
         hitSmokeEffect = Instantiate(hitSmokeEffectPrefab);
